@@ -7,7 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", require("./modules/auth/auth.routes"));
+// Middleware to log every request
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url} ${JSON.stringify(req.body)}`);
+    next();
+});
 
+app.use("/api/v1/auth", require("./modules/auth/auth.routes"));
 
 module.exports = app;
