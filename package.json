@@ -1,0 +1,32 @@
+{
+  "name": "community-help-hub",
+  "version": "1.0.0",
+  "description": "**A full-stack community support platform built with Node.js (Express.js), MongoDB, and real-world data structures like Queues, Stacks, and Graphs.**   Facilitates request-for-help workflows, community collaboration, and dynamic task coordination among users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techknowch/community-help-hub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/techknowch/community-help-hub/issues"
+  },
+  "homepage": "https://github.com/techknowch/community-help-hub#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
