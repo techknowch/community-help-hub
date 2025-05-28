@@ -2,9 +2,11 @@
   "name": "community-help-hub",
   "version": "1.0.0",
   "description": "**A full-stack community support platform built with Node.js (Express.js), MongoDB, and real-world data structures like Queues, Stacks, and Graphs.**   Facilitates request-for-help workflows, community collaboration, and dynamic task coordination among users.",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
