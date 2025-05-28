@@ -90,18 +90,81 @@ Community Help Hub is designed for neighborhood groups, student communities, or 
 
 ```plaintext
 community-help-hub/
-├── controllers/
-├── models/
-├── routes/
-├── middleware/
-├── services/
-├── utils/
-├── config/
-├── public/ (if EJS or static files used)
+│
+├── src/
+│   ├── modules/                      # Feature modules (self-contained)
+│   │   ├── auth/
+│   │   │   ├── auth.controller.js
+│   │   │   ├── auth.service.js
+│   │   │   ├── auth.routes.js
+│   │   │   ├── auth.model.js
+│   │   │   └── auth.validator.js
+│   │   │
+│   │   ├── users/
+│   │   │   ├── user.controller.js
+│   │   │   ├── user.service.js
+│   │   │   ├── user.routes.js
+│   │   │   ├── user.model.js
+│   │   │   └── user.graph.js           # Graph-based user relationships
+│   │   │
+│   │   ├── requests/
+│   │   │   ├── request.controller.js
+│   │   │   ├── request.service.js
+│   │   │   ├── request.routes.js
+│   │   │   ├── request.model.js
+│   │   │   └── request.queue.js        # FIFO queue handling
+│   │   │
+│   │   ├── comments/
+│   │   │   ├── comment.controller.js
+│   │   │   ├── comment.service.js
+│   │   │   ├── comment.routes.js
+│   │   │   ├── comment.model.js
+│   │   │   └── comment.stack.js        # Stack for comment history
+│   │   │
+│   │   ├── tasks/
+│   │   │   ├── task.controller.js
+│   │   │   ├── task.service.js
+│   │   │   ├── task.routes.js
+│   │   │   ├── task.model.js
+│   │   │   └── task.graph.js           # Directed graph for dependencies
+│   │   │
+│   │   ├── groups/
+│   │   │   ├── group.controller.js
+│   │   │   ├── group.service.js
+│   │   │   ├── group.routes.js
+│   │   │   ├── group.model.js
+│   │   │   └── group.moderation.js
+│   │   │
+│   │   └── admin/
+│   │       ├── admin.controller.js
+│   │       ├── admin.routes.js
+│   │       └── admin.queue.js
+│
+│   ├── config/                        # App-wide configuration
+│   │   ├── db.js
+│   │   ├── redis.js
+│   │   └── env.js
+│
+│   ├── middleware/                   # Global middlewares
+│   │   ├── auth.middleware.js
+│   │   ├── error.middleware.js
+│   │   └── validation.middleware.js
+│
+│   ├── utils/                        # Helpers and utilities
+│   │   ├── logger.js
+│   │   ├── mailer.js
+│   │   ├── socket.js
+│   │   └── graph.utils.js
+│
+│   ├── app.js                        # Express app instance
+│   └── server.js                     # Server bootstrap
+│
+├── public/                           # Static assets (if needed)
+│
 ├── .env
-├── app.js
-├── server.js
-└── README.md
+├── .gitignore
+├── package.json
+├── README.md
 ```
 
 ---
