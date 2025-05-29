@@ -6,3 +6,5 @@ const { createRequestSchema } = require("./request.validator");
 const validate = require("../../middlewares/validate");
 
 router.post("/", validate(createRequestSchema), controller.createRequest);
+
+module.exports = router;
