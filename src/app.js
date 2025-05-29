@@ -14,5 +14,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/v1/auth", require("./modules/auth/auth.routes"));
+app.use("/api/v1/requests", require("./modules/requests/request.routes"));
 
 module.exports = app;
