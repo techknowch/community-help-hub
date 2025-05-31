@@ -15,5 +15,7 @@ const persistentQueue = new PersistentQueue("help_request_queue");
 })();
 
 
-module.exports = requestQueue;
-module.exports.persistentQueue = persistentQueue;
+module.exports = {
+    requestQueue,
+    persistentQueue
+};
