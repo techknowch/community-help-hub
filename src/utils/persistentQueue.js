@@ -13,9 +13,22 @@ class PersistentQueue {
   }
 
   async enqueue(item) {
+
+    if (!item) throw new Error("Item cannot be null or undefined");
+
+    const requestId = item._id;
+    console.log("Enqueuing item with ID:", requestId);
+
+    const queueItem = {
+        requestId: item._id.toString(), // Ensure requestId is a string
+        status: item.status || "pending", // Default status if not provided
+        priority: item.priority || 'normal' // Default priority if not provided
+    };
+
     await QueueModel.updateOne(
       { name: this.name },
-      { $push: { items: item } }
+        { $push: { items: queueItem } },
+        { upsert: true }
     );
   }
 
