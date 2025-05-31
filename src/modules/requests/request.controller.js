@@ -1,5 +1,5 @@
 const requestService = require('./request.service');
-const requestQueue = require('./request.queue');
+const { requestQueue } = require("./request.queue");
 exports.createRequest = async(req, res) => {
     try {
         const result = await requestService.createRequest(req.body);
