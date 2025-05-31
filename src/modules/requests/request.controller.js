@@ -11,6 +11,7 @@ exports.createRequest = async(req, res) => {
 
 exports.viewQueue = (req, res) => {
     const items = requestQueue.getItems();
+    console.log("Items in queue:", items);
     if (items.length === 0) {
         return res.status(404).json({ message: "Queue is empty" });
     }
