@@ -7,4 +7,7 @@ const validate = require("../../middlewares/validate");
 
 router.post("/", validate(createRequestSchema), controller.createRequest);
 
+//queue
+router.get("/queue", controller.viewQueue);
+
 module.exports = router;
