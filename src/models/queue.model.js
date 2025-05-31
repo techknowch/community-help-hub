@@ -2,8 +2,14 @@ const mongoose = require("mongoose");
 
 const queueSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true }, // e.g. "help_request_queue"
-  items: { type: [Object], default: [] },                // Object of requests in queue
-  requestIds: { type: [mongoose.Schema.Types.ObjectId], ref: 'Request', default: [] }, // Array of request IDs
+  items: { 
+    type: [{ 
+      requestId: { type: mongoose.Schema.Types.ObjectId, ref: 'Request', required: true },
+      status: { type: String, required: true },
+      priority: { type: String, required: true, enum: ['low', 'normal', 'high']}
+    }], 
+    default: [] 
+  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 }, {
