@@ -1,4 +1,4 @@
-const QueueModel = require("../models/queue.model");
+const QueueModel = require("../modules/queue/models/queue.model");
 
 class PersistentQueue {
   constructor(queueName) {
