@@ -22,6 +22,20 @@ exports.getRequest = async(req, res) => {
     }
 }
 
+exports.updateRequest = async(req, res) => {
+    try {
+        const requestId = req.params.id;
+        const updatedData = req.body;
+        const result = await requestService.updateRequest(requestId, updatedData);
+        if (!result) {
+            return res.status(404).json({ message: "Request not found" });
+        }
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+}
+
 exports.viewQueue = (req, res) => {
     const items = requestQueue.getItems();
     console.log("Items in queue:", items);

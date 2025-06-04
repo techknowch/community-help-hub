@@ -26,3 +26,17 @@ exports.getRequest = async (requestId) => {
         throw new Error(`Error retrieving request: ${error.message}`);
     }
 }
+
+exports.updateRequest = async (requestId, updatedData) => {
+    try {
+        const request = await Request.findByIdAndUpdate(requestId, updatedData, { new: true });
+        if (!request) {
+            throw new Error(`Request with ID ${requestId} not found`);
+        }
+        // TODO Update the queue if necessary
+        console.log(`Request updated: ${request._id}`);
+        return request;
+    } catch (error) {
+        throw new Error(`Error updating request: ${error.message}`);
+    }
+}
