@@ -36,6 +36,19 @@ exports.updateRequest = async(req, res) => {
     }
 }
 
+exports.deleteRequest = async(req, res) => {
+    try {
+        const requestId = req.params.id;
+        const result = await requestService.deleteRequest(requestId);
+        if (!result) {
+            return res.status(404).json({ message: "Request not found" });
+        }
+        res.status(200).json({ message: "Request deleted successfully" });
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+}
+
 exports.viewQueue = (req, res) => {
     const items = requestQueue.getItems();
     console.log("Items in queue:", items);
