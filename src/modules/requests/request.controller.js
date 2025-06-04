@@ -1,5 +1,5 @@
 const requestService = require('./request.service');
-const { requestQueue } = require("./request.queue");
+const { requestQueue, persistentQueue } = require("./request.queue");
 exports.createRequest = async(req, res) => {
     try {
         const result = await requestService.createRequest(req.body);
@@ -57,4 +57,19 @@ exports.viewQueue = (req, res) => {
     }
     // Return the items in the queue
     res.status(200).json(items);
+}
+
+exports.viewPersistentQueue = async (req, res) => {
+    try {
+        const items = await persistentQueue.getItems();
+        console.log("Items in persistent queue:", items);
+        if (items.length === 0) {
+            return res.status(404).json({ message: "Persistent queue is empty" });
+        }
+        // Return the items in the persistent queue
+        res.status(200).json(items);
+    } catch (error) {
+        console.error("Error retrieving persistent queue items:", error);
+        res.status(500).json({ error: "Failed to retrieve persistent queue items" });
+    }
 }
