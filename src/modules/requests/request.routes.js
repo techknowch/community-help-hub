@@ -9,5 +9,6 @@ router.post("/", validate(createRequestSchema), controller.createRequest);
 
 //queue
 router.get("/queue", controller.viewQueue);
+router.get("/persistent-queue", controller.viewPersistentQueue);
 
 module.exports = router;
