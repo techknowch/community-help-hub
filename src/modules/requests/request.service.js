@@ -14,3 +14,15 @@ exports.createRequest = async (requestData) => {
         throw new Error(`Error creating request: ${error.message}`);
     }
 }
+
+exports.getRequest = async (requestId) => {
+    try {
+        const request = await Request.findById(requestId);
+        if (!request) {
+            throw new Error(`Request with ID ${requestId} not found`);
+        }
+        return request;
+    } catch (error) {
+        throw new Error(`Error retrieving request: ${error.message}`);
+    }
+}
