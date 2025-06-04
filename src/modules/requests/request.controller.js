@@ -9,6 +9,19 @@ exports.createRequest = async(req, res) => {
     }
 }
 
+exports.getRequest = async(req, res) => {
+    try {
+        const requestId = req.params.id;
+        const result = await requestService.getRequest(requestId);
+        if (!result) {
+            return res.status(404).json({ message: "Request not found" });
+        }
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+}
+
 exports.viewQueue = (req, res) => {
     const items = requestQueue.getItems();
     console.log("Items in queue:", items);
