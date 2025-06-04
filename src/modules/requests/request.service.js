@@ -40,3 +40,17 @@ exports.updateRequest = async (requestId, updatedData) => {
         throw new Error(`Error updating request: ${error.message}`);
     }
 }
+
+exports.deleteRequest = async (requestId) => {
+    try {
+        const request = await Request.findByIdAndDelete(requestId);
+        if (!request) {
+            throw new Error(`Request with ID ${requestId} not found`);
+        }
+        // TODO Remove from the queue if necessary
+        console.log(`Request deleted: ${request._id}`);
+        return request;
+    } catch (error) {
+        throw new Error(`Error deleting request: ${error.message}`);
+    }
+}
