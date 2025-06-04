@@ -49,7 +49,8 @@ class PersistentQueue {
   }
 
   async size() {
-    const queue = await QueueModel.findOne({ name: this.name });
+    const queue = await QueueModel.findOne({ name: this.name }).populate('items.requestId');
+    if (!queue) return 0;
     return queue ? queue.items.length : 0;
   }
 
